@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="BookStore">
+<html ng-app="orderByExample3">
 	<head>
 		<title>Book Store</title>
 
@@ -7,68 +7,38 @@
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	</head>
 	<body>
-		<div class="container" ng-controller="BookController">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Book Store Application</h2>
-					<hr />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">	
-					<form class="form">
-						<fieldset>
-							<legend><i class="glyphicon glyphicon-book"></i> Book Information</legend>
-							<div class="form-group">
-								<label class="form-label">Title</label>
-								<input type="text" name="title" ng-model="title" class="form-control" placeholder="Enter Book Title..." />		
-							</div>
-							<div class="form-group">
-								<label class="form-label">Author</label>
-								<input type="text" name="author" ng-model="author" class="form-control" placeholder="Enter Book Author..." />		
-							</div>
-							<div class="form-group">
-								<label class="form-label">Price</label>
-								<input type="text" name="price" ng-model="price" class="form-control" placeholder="Enter Book Price..." />		
-							</div>
-							<div class="form-group">
-								<input type="submit" ng-click="save()" value="Save Book" class="btn btn-xl btn-info" />	
-							</div>	
-						</fieldset>
-					</form>
-				</div>
-				<div class="col-md-6">
-					<div class="input-group">
-				      	<div class="input-group-btn">
-				        	<button type="button" class="btn btn-info dropdown-toggle">Search: </button>
-				      	</div>
-				      	<input type="text" ng-model="search" name="search" class="form-control" />
-				    </div>
-					<table style="margin-top: 20px;" class="table table-bordered table-hover table-collapse">
-						<thead>
-							<th>TITLE<button ng-click="sortBy('name')"><span class="sortOrder" ng-show="propertyName === 'name' "></span></button> </th>
-							<th>AUTHOR<button ng-click="sortBy('author')"><span class="sortOrder" ng-show="propertyName === 'author' "></button> </th>
-							<th>PRICE<button ng-click="sortBy('price')"><span class="sortOrder" ng-show="propertyName === 'price' "></button> </th>
-							<th>ACTION </th>
-						</thead>
-						<tbody>
-							<tr ng-repeat="book in books | filter:search | orderBy:propertName:reverse">
-								<td class="hidden">NO more items</td>
-								<td> {{ book.title }}  </td>
-								<td> {{ book.author }} </td>
-								<td> {{ book.price }}  </td>
-								<td>
-									<button type="button" class="btn btn-danger" ng-click="delete()" aria-label="Delete">
-									  	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>	
-				</div>
-			</div>
+		<div ng-controller="ExampleController">
+		  <hr/>
+		  <button ng-click="sortBy(null)">Set to unsorted</button>
+		  <hr/>
+		  <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-info dropdown-toggle">Search: </button>
+                </div>
+                <input type="text" ng-model="search" name="search" class="form-control" />
+            </div>
+		  <table class="friends">
+		    <tr>
+		      <th>
+		        <button ng-click="sortBy('name')">Name</button>
+		        <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		        <button ng-click="sortBy('phone')">Phone Number</button>
+		        <span class="sortorder" ng-show="propertyName === 'phone'" ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		        <button ng-click="sortBy('age')">Age</button>
+		        <span class="sortorder" ng-show="propertyName === 'age'" ng-class="{reverse: reverse}"></span>
+		      </th>
+		    </tr>
+		    <tr ng-repeat="friend in friends | filter:search">
+		      <td>{{friend.name}}</td>
+		      <td>{{friend.phone}}</td>
+		      <td>{{friend.age}}</td>
+		    </tr>
+		  </table>
 		</div>
-
 		<!-- angular.min.js -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 

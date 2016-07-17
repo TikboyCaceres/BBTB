@@ -18,4 +18,6 @@ angular.module('orderByExample3', [])
     $scope.propertyName = propertyName;
     $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
   };
+
+  
 }]);
