@@ -1,11 +1,11 @@
 angular.module('orderByExample3', [])
 .controller('ExampleController', ['$scope', 'orderByFilter', function($scope, orderBy) {
   var friends = [
-    {name: 'John',   phone: '555-1212',  age: 10},
-    {name: 'Mary',   phone: '555-9876',  age: 19},
-    {name: 'Mike',   phone: '555-4321',  age: 21},
-    {name: 'Adam',   phone: '555-5678',  age: 35},
-    {name: 'Julie',  phone: '555-8765',  age: 29}
+    {name: 'Column 1',   phone: '1',  age: 10},
+    {name: 'Column 2',   phone: '2',  age: 19},
+    {name: 'Column 3',   phone: '3',  age: 21},
+    {name: 'Column 4',   phone: '4',  age: 35},
+    {name: 'Column 5',  phone: '5',  age: 29}
   ];
 
   $scope.propertyName = 'age';

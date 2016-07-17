@@ -5,6 +5,7 @@
 
     <!-- bootstrap.min.css -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   </head>
   <body>
     <div class="container" ng-controller="ExampleController">
@@ -44,11 +45,11 @@
                 </div>
                 <input type="text" ng-model="search" name="search" class="form-control" />
             </div>
-          <table style="margin-top: 20px;" class="table table-bordered table-hover table-collapse">
+          <table style="margin-top: 20px;" class="table table-bordered table-striped table-hover table-collapse">
             <thead>
-              <th><button ng-click="sortBy('title')"><span class="sortOrder" ng-show="propertyName === 'title' "></span>TITLE</button> </th>
-              <th><button ng-click="sortBy('author')"><span class="sortOrder" ng-show="propertyName === 'author' "></span>AUTHOR</button> </th>
-              <th><button ng-click="sortBy('price')"><span class="sortOrder" ng-show="propertyName === 'price' "></span>PRICE</button> </th>
+              <th><button ng-click="sortBy('name')"><span class="sortOrder" ng-show="propertyName === 'name' "></span>TITLE</button> </th>
+              <th><button ng-click="sortBy('phone')"><span class="sortOrder" ng-show="propertyName === 'phone' "></span>AUTHOR</button> </th>
+              <th><button ng-click="sortBy('age')"><span class="sortOrder" ng-show="propertyName === 'age' "></span>PRICE</button> </th>
               <th>ACTION </th>
             </thead>
             <tbody>

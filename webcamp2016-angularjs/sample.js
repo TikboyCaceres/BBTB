@@ -19,5 +19,27 @@ angular.module('orderByExample3', [])
     $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
   };
 
-  
+  $scope.propertyName = 'name';
+  $scope.reverse = true;
+  $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
+
+  $scope.sortBy = function(propertyName) {
+    $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName)
+        ? !$scope.reverse : false;
+    $scope.propertyName = propertyName;
+    $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
+  };
+
+  $scope.propertyName = 'phone';
+  $scope.reverse = true;
+  $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
+
+  $scope.sortBy = function(propertyName) {
+    $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName)
+        ? !$scope.reverse : false;
+    $scope.propertyName = propertyName;
+    $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
+  };
+
+
 }]);
