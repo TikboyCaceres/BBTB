@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="orderByExample3">
+  <head>
+    <title>Book Store</title>
+
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <div class="container" ng-controller="ExampleController">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>BBTB Phonebook - Simple Data Table</h2>
+          <hr />
+        </div>
+      </div>
+      <div class="row">
+        
+        <div class="col-md-12">
+          <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-success dropdown-toggle">Search: </button>
+                </div>
+                <input type="text" ng-model="search" name="search" class="form-control" />
+            </div> <br>
+
+            <form>
+              <select ng-model="itemLimits">
+                <option ng-repeat="limit in limits"> {{ limit }} </option>
+              </select>         
+            </form>
+
+          <table style="margin-top: 20px;" class="table table-bordered table-striped table-hover table-collapse" id ="example">
+            <thead>
+              <th>Name<button ng-click="sortBy('name')" class="pull-right"><span class="glyphicon glyphicon-sort" ></span></button> </th>
+              <th>Phone<button ng-click="sortBy('phone')" class="pull-right"><span class="glyphicon glyphicon-sort"></span></button> </th>
+              <th>Age<button ng-click="sortBy('age')" class="pull-right"><span class="glyphicon glyphicon-sort"></span></button> </th>
+              <th>ACTION </th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="friend in f = (friends | filter:search) | limitTo: itemLimits">
+                <td class="hidden">NO more items</td>
+                <td> {{ friend.name }}  </td>
+                <td> {{ friend.phone }} </td>
+                <td> {{ friend.age }}  </td>
+                <td ng-hide="f.length">There is no result</td>
+                <td>
+                  <button type="button" class="btn btn-danger" ng-click="delete()" aria-label="Delete">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <tfoot>Number of filtered people: <strong>{{f.length}}</strong> out of <strong>{{friends.length}}</strong></tfoot>  
+        </div>
+      </div>
+    </div>
+
+    <!-- angular.min.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+    <!-- js/app.js -->
+    <script src="app.js"></script>
+  </body>
+</html>
