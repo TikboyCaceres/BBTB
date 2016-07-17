@@ -11,53 +11,33 @@
     <div class="container" ng-controller="ExampleController">
       <div class="row">
         <div class="col-md-12">
-          <h2>Book Store Application</h2>
+          <h2>Simple Data Table</h2>
           <hr />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">  
-          <form class="form">
-            <fieldset>
-              <legend><i class="glyphicon glyphicon-book"></i> Book Information</legend>
-              <div class="form-group">
-                <label class="form-label">Title</label>
-                <input type="text" name="title" ng-model="title" class="form-control" placeholder="Enter Book Title..." />    
-              </div>
-              <div class="form-group">
-                <label class="form-label">Author</label>
-                <input type="text" name="author" ng-model="author" class="form-control" placeholder="Enter Book Author..." />   
-              </div>
-              <div class="form-group">
-                <label class="form-label">Price</label>
-                <input type="text" name="price" ng-model="price" class="form-control" placeholder="Enter Book Price..." />    
-              </div>
-              <div class="form-group">
-                <input type="submit" ng-click="save()" value="Save Book" class="btn btn-xl btn-info" /> 
-              </div>  
-            </fieldset>
-          </form>
-        </div>
-        <div class="col-md-6">
+        
+        <div class="col-md-12">
           <div class="input-group">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-info dropdown-toggle">Search: </button>
                 </div>
                 <input type="text" ng-model="search" name="search" class="form-control" />
             </div>
-          <table style="margin-top: 20px;" class="table table-bordered table-striped table-hover table-collapse">
+          <table style="margin-top: 20px;" class="table table-bordered table-striped table-hover table-collapse" id ="example">
             <thead>
-              <th><button ng-click="sortBy('name')"><span class="sortOrder" ng-show="propertyName === 'name' "></span>TITLE</button> </th>
-              <th><button ng-click="sortBy('phone')"><span class="sortOrder" ng-show="propertyName === 'phone' "></span>AUTHOR</button> </th>
-              <th><button ng-click="sortBy('age')"><span class="sortOrder" ng-show="propertyName === 'age' "></span>PRICE</button> </th>
+              <th>Column 1<button ng-click="sortBy('name')"><span class="sortOrder" ng-show="propertyName === 'name' "></span></button> </th>
+              <th>Column 2<button ng-click="sortBy('phone')"><span class="sortOrder" ng-show="propertyName === 'phone' "></span></button> </th>
+              <th>Colum 3<button ng-click="sortBy('age')"><span class="sortOrder" ng-show="propertyName === 'age' "></span></button> </th>
               <th>ACTION </th>
             </thead>
             <tbody>
-              <tr ng-repeat="friend in friends | filter:search">
+              <tr ng-repeat="friend in f = (friends | filter:search)">
                 <td class="hidden">NO more items</td>
                 <td> {{ friend.name }}  </td>
                 <td> {{ friend.phone }} </td>
                 <td> {{ friend.age }}  </td>
+                <td ng-hide="f.length">There is no result</td>
                 <td>
                   <button type="button" class="btn btn-danger" ng-click="delete()" aria-label="Delete">
                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -65,7 +45,8 @@
                 </td>
               </tr>
             </tbody>
-          </table>  
+          </table>
+          <tfoot>Number of filtered people: <strong>{{f.length}}</strong></tfoot>  
         </div>
       </div>
     </div>
